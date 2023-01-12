@@ -1,0 +1,12 @@
+#block_register {
+    display: block;
+}
+#register{
+    display: block;
+}
+#block_login {
+    display: none;
+}
+#login{
+    display: none;
+}

@@ -9,6 +9,26 @@ import { firebaseConfig } from "./firebase.js";
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
+
+//===========================================
+const change_form = () => {
+    const register_form = document.getElementById('register');
+    const register_form_display = window.getComputedStyle(register_form).display;
+    if (register_form_display == 'block') {
+        document.getElementById('register').style.display = 'none'
+        document.getElementById('block_register').style.display = 'none'
+        document.getElementById('login').style.display = 'block'
+        document.getElementById('block_login').style.display = 'block'
+    } else {
+        document.getElementById('register').style.display = 'block'
+        document.getElementById('block_register').style.display = 'block'
+        document.getElementById('login').style.display = 'none'
+        document.getElementById('block_login').style.display = 'none'
+    }
+}
+document.getElementById('change').addEventListener('click', change_form)
+//===========================================
+
 const registerNewUser = () => {
     const username = document.getElementById('username').value;
     const email = document.getElementById('email').value;
@@ -53,6 +73,7 @@ const loginUser = () => {
             time_stamp: `${loginTime}`
         })
         // ...
+
     })
     .catch((error) => {
         const errorCode = error.code;
@@ -66,12 +87,27 @@ const user = auth.currentUser;
 onAuthStateChanged(auth, (user) => {
     if(user){
         const uid = user.uid;
+        //log in
+        document.getElementById('block2').style.display = 'block'
+        document.getElementById('main').style.display = 'none'
+        document.getElementById('products').style.display = 'block'
     }
     else{
-
+        //log out
+        document.getElementById('block2').style.display = 'none'
+        document.getElementById('main').style.display = 'block'
+        document.getElementById('products').style.display = 'none'
     }
 })
 
-document.getElementById('logout')
+document.getElementById('logout').addEventListener('click', () => {
+    signOut(auth).then(() => {
+        // alert('sign-out')
+    }).catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage)
+    })
+})
 
 
