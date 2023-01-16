@@ -10,27 +10,9 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
 
-//===========================================
-const change_form = () => {
-    const register_form = document.getElementById('register');
-    const register_form_display = window.getComputedStyle(register_form).display;
-    if (register_form_display == 'block') {
-        document.getElementById('register').style.display = 'none'
-        document.getElementById('block_register').style.display = 'none'
-        document.getElementById('login').style.display = 'block'
-        document.getElementById('block_login').style.display = 'block'
-    } else {
-        document.getElementById('register').style.display = 'block'
-        document.getElementById('block_register').style.display = 'block'
-        document.getElementById('login').style.display = 'none'
-        document.getElementById('block_login').style.display = 'none'
-    }
-}
-document.getElementById('change').addEventListener('click', change_form)
-//===========================================
+
 
 const registerNewUser = () => {
-    const username = document.getElementById('username').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     
@@ -42,11 +24,11 @@ const registerNewUser = () => {
             const signintime = new Date()
             set(ref(database, 'users/' + user.uid), {
                 user_email: email,
-                user_username: username,
+                user_passwd: password,
                 user_role: "simple_role",
                 time_stamp: `${signintime}`
             });
-            console.log('new user created!');
+            // console.log('new user created!');
             // ...
         })
         .catch((error) => {
@@ -59,14 +41,14 @@ const registerNewUser = () => {
 document.getElementById('register').addEventListener('click', registerNewUser);
 
 const loginUser = () => {
-    const login_email = document.getElementById('log_email').value;
-    const login_password = document.getElementById('log_password').value;
+    const login_email = document.getElementById('email').value;
+    const login_password = document.getElementById('password').value;
 
     signInWithEmailAndPassword(auth, login_email, login_password)
     .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        console.log('loged in!');
+        // console.log('loged in!');
 
         const loginTime = new Date()
         update(ref(database, 'users/', + user.uid), {
@@ -90,13 +72,13 @@ onAuthStateChanged(auth, (user) => {
         //log in
         document.getElementById('block2').style.display = 'block'
         document.getElementById('main').style.display = 'none'
-        document.getElementById('products').style.display = 'block'
+        //===========================================
     }
     else{
         //log out
         document.getElementById('block2').style.display = 'none'
         document.getElementById('main').style.display = 'block'
-        document.getElementById('products').style.display = 'none'
+        //===========================================
     }
 })
 
@@ -110,4 +92,56 @@ document.getElementById('logout').addEventListener('click', () => {
     })
 })
 
+//===========================================
+const form = () =>{
+    const main = document.getElementById('main')
+    //===========================================
+    const form = document.createElement('div')
+    form.setAttribute('id','block1')
+    form.classList('row d-flex justify-content-center')
+    //===========================================
+    const form_in = document.createElement('div')
+    form.setAttribute('id','block_register_login')
+    form.classList('col-sm-12 col-md-3')
+    //===========================================
+    const email_div = document.createElement('div')
+    email_div.classList('mb-3')
+    form_in.appendChil(email_div)
+    //===========================================
+    const email_input = document.createElement('input')
+    email_input.setAttribute('type','text')
+    email_input.setAttribute('id','email')
+    email_input.setAttribute('placeholder','email')
+    email_input.classList('form-control')
+    email_div.appendChild(email_input)
+    //===========================================
+    const password_div = document.createElement('div')
+    password_div.classList('mb-3')
+    form_in.appendChild(password_div)
+    //===========================================
+    const password_input = document.createElement('input')
+    password_input.setAttribute('type','text')
+    password_input.setAttribute('id','login')
+    password_input.setAttribute('placeholder','password')
+    password_input.classList('form-control')
+    password_div.appendChild(password_input)
+    form.appendChild(form_in)
+    //===========================================
 
+    //===========================================
+
+}
+//===========================================
+const change_form = () => {
+    const register_form = document.getElementById('register');
+    const register_form_display = window.getComputedStyle(register_form).display;
+    if (register_form_display == 'block') {
+        document.getElementById('register').style.display = 'none'
+        document.getElementById('login').style.display = 'block'
+    } else {
+        document.getElementById('register').style.display = 'block'
+        document.getElementById('login').style.display = 'none'
+    }
+}
+document.getElementById('change').addEventListener('click', change_form)
+//===========================================
