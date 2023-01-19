@@ -1,11 +1,9 @@
-#block_register {
-    display: block;
+body{
+    height: 100vh;
 }
+
 #register{
     display: block;
-}
-#block_login {
-    display: none;
 }
 #login{
     display: none;
