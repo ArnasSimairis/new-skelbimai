@@ -11,18 +11,28 @@ const database = getDatabase(app);
 const auth = getAuth();
 //===========================================
 import {log_reg} from './login_register_form.js'
-import {skelb} from './skelbimai_simple.js'
+import {skelb} from './skelbimai_form.js'
 const user = auth.currentUser;
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
         const uid = user.uid;
         //log in
+        var child = document.body.lastElementChild; 
+        while (child) {
+            document.body.removeChild(child);
+            child = document.body.lastElementChild;
+        }
         document.body.appendChild(skelb)
         //===========================================
     }
     else {
         //log out
+        var child = document.body.lastElementChild; 
+        while (child) {
+            document.body.removeChild(child);
+            child = document.body.lastElementChild;
+        }
         document.body.appendChild(log_reg)
         //===========================================
     }
@@ -34,7 +44,7 @@ const registerNewUser = () => {
 
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // Signed in 
+            
             const user = userCredential.user;
 
             const signintime = new Date()
@@ -51,6 +61,7 @@ const registerNewUser = () => {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorMessage);
+
         });
 
 };
@@ -87,7 +98,7 @@ button_login.addEventListener('click', loginUser)
 
 
 //===========================================
-import {logout} from './skelbimai_simple.js'
+import {logout} from './skelbimai_form.js'
 logout.addEventListener('click', () => {
     signOut(auth).then(() => {
         alert('sign-out')
