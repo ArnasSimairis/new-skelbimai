@@ -1,7 +1,7 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 import { firebaseConfig } from "./firebase.js";
 const app = initializeApp(firebaseConfig);
 
@@ -10,62 +10,76 @@ import { getDatabase, ref, get, set, child, update, remove }
 
 const db = getDatabase();
 
-let enterID = document.getElementById("enterID")
-let enterName = document.getElementById("enterName")
-let enterQuantity = document.getElementById("enterQuantity")
-let findID = document.getElementById("findID")
-let findData = document.getElementById("findData")
-let enterKaina = document.getElementById("enterKaina")
-let enterAprasyma = document.getElementById("enterAprasyma")
-let enterFoto = document.getElementById("enterFoto")
+// let enterID = document.getElementById("enterID")
+// let enterName = document.getElementById("enterName")
+// let enterQuantity = document.getElementById("enterQuantity")
+// let findID = document.getElementById("findID")
+// let findData = document.getElementById("findData")
+// let enterKaina = document.getElementById("enterKaina")
+// let enterAprasyma = document.getElementById("enterAprasyma")
+// let enterFoto = document.getElementById("enterFoto")
 
-
-let findBtn = document.getElementById("find")
-
-function insertData(evt) {
-    evt.preventDefault();
-    if (enterID.value.length < 3) {
-        alert('Product Code cant be blank! MIN 3 symbols')
-        return
-    }
-    if (enterName.value === "") {
-        alert('Product name cant be blank!')
-        return
-    }
-    if (enterQuantity.value.length < 1) {
-        alert('Product Quantity cant be blank! MTN 1 symbols')
-        return
-    }
-    if (enterKaina.value.length < 1) {
-        alert('Product kaina cant be blank! MTN 1 symbols')
-        return
-    }
-    if (enterAprasyma.value === "") {
-        alert('Product aprasymas cant be blank! MTN 1 symbols')
-        return
-    }
-    if (enterFoto.value === "") {
-        alert('Product Foto cant be blank! MTN 1 symbols')
-        return
-    }
-    console.log(enterID.value, enterName.value, enterQuantity.value, enterKaina.value, enterAprasyma.value, enterFoto.value);
-    set(ref(db, "Product/" + enterID.value), {
-        Name: enterName.value,
-        ID: enterID.value,
-        Quantity: enterQuantity.value,
-        Kaina: enterKaina.value,
-        Aprasyma: enterAprasyma.value,
-        Foto: enterFoto.value
-    })
-        .then(() => {
-            alert("Data added successfully");
-        })
-        .catch((error) => {
-            alert(error)
-        })
-}
+import {enterName} from "./skelbimai_form.js";
+import {enterQuantity} from "./skelbimai_form.js";
+import {enterCost} from "./skelbimai_form.js";
+import {enterDescription} from "./skelbimai_form.js";
+import {enterFoto} from "./skelbimai_form.js";
+const auth = getAuth();
+const user = auth.currentUser;
+// let findBtn = document.getElementById("find")
 import { insertbtn } from "./skelbimai_form.js";
-insertbtn.addEventListener('click', insertData)
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        const user_uid = user.uid;
+        const unique_id = Date.now()
+        function insertData(evt) {
+            evt.preventDefault();
+            if (enterName.value === "") {
+                alert('Product Ngame cant be blank!')
+                return
+            }
+            if (enterQuantity.value.length < 1) {
+                alert('Product Quantity cant be blank! MiN 1 symbols')
+                return
+            }
+            if (enterCost.value.length < 1) {
+                alert('Product Cost cant be blank! MiN 1 symbols')
+                return
+            }
+            if (enterDescription.value === "") {
+                alert('Product Description cant be blank! MiN 1 symbols')
+                return
+            }
+            if (enterFoto.value === "") {
+                alert('Product Foto cant be blank! MiN 1 symbols')
+                return
+            }
+            console.log(enterName.value, enterQuantity.value, enterCost.value, enterDescription.value, enterFoto.value);
+            set(ref(db, "Product/" + unique_id), {
+
+                Name: enterName.value,
+                ID: unique_id,
+                Users: user_uid,
+                Quantity: enterQuantity.value,
+                Kaina: enterCost.value,
+                Description: enterDescription.value,
+                Foto: enterFoto.value
+            })
+                .then(() => {
+                    alert("Data added successfully");
+                })
+                .catch((error) => {
+                    alert(error)
+                })
+        }
+        insertbtn.addEventListener('click', insertData)
+
+    }
+})
+
+
+
 
 
 function FindData(evt) {
@@ -126,9 +140,9 @@ function FindData(evt) {
                 let list_quantity = document.createElement('td')
                 list_quantity.textContent =  snapshot.val().Quantity
                 let list_kaina = document.createElement('td')
-                list_kaina.textContent =  snapshot.val().Kaina
+                list_kaina.textContent =  snapshot.val().Cost
                 let list_aprasymas = document.createElement('td')
-                list_aprasymas.textContent =  snapshot.val().Aprasyma
+                list_aprasymas.textContent =  snapshot.val().Description
                 let list_foto = document.createElement('img')
                 list_foto.src =  snapshot.val().Foto
                 list_foto.classList.add('hello')
@@ -180,14 +194,14 @@ function UpdateData(evt) {
     console.log(`update function ${enterID.value}
                                 ${enterName.value}
                                 ${enterQuantity.value}
-                                ${enterKaina.value}
-                                ${enterAprasyma.value}
+                                ${enterCost.value}
+                                ${enterDescription.value}
                                 ${enterFoto.value}`);
     update(ref(db, "Product/" + enterID.value), {
         Name: enterName.value,
         Quantity: enterQuantity.value,
-        Kaina: enterKaina.value,
-        Aprasyma: enterAprasyma.value,
+        Cost: enterCost.value,
+        Description: enterDescription.value,
         Foto: enterFoto.value
     })
         .then(() => {

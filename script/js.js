@@ -25,6 +25,7 @@ onAuthStateChanged(auth, (user) => {
         }
         document.body.appendChild(skelb)
         //===========================================
+        return uid
     }
     else {
         //log out

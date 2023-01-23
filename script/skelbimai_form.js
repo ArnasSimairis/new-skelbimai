@@ -2,6 +2,12 @@
 const skelb = document.createElement('div')
 skelb.setAttribute('id', 'skelb')
 //===========================================
+
+
+
+
+
+//===========================================
 const block2 = document.createElement('div')
 block2.setAttribute('id', 'block2')
 //===========================================
@@ -10,6 +16,12 @@ logout.setAttribute('id', 'logout')
 logout.innerText = 'Logout'
 block2.appendChild(logout)
 skelb.appendChild(block2)
+//===========================================
+
+
+
+
+
 //===========================================
 const container_skel = document.createElement('div')
 container_skel.setAttribute('id', 'container')
@@ -23,21 +35,21 @@ cont_row_in.classList = 'col-sm-12 col-md-6'
 const form_skelb = document.createElement('form')
 form_skelb.classList = 'px-3'
 //===========================================
-const form_skelb_div1 = document.createElement('div')
-form_skelb_div1.classList = 'mb-3'
+// const form_skelb_div1 = document.createElement('div')
+// form_skelb_div1.classList = 'mb-3'
 
-const lable_id = document.createElement('lable')
-lable_id.classList = 'form-lable text-secondary'
-lable_id.innerText = 'Product Code'
-form_skelb_div1.appendChild(lable_id)
+// const lable_id = document.createElement('lable')
+// lable_id.classList = 'form-lable text-secondary'
+// lable_id.innerText = 'Product Code'
+// form_skelb_div1.appendChild(lable_id)
 
-const enterID = document.createElement('input')
-enterID.setAttribute('type', 'number')
-enterID.classList = 'form-control'
-enterID.setAttribute('placeholder', 'only number...')
-form_skelb_div1.appendChild(enterID)
-form_skelb.appendChild(form_skelb_div1)
-//===========================================
+// const enterID = document.createElement('input')
+// enterID.setAttribute('type', 'number')
+// enterID.classList = 'form-control'
+// enterID.setAttribute('placeholder', 'only number...')
+// form_skelb_div1.appendChild(enterID)
+// form_skelb.appendChild(form_skelb_div1)
+// //===========================================
 const form_skelb_div2 = document.createElement('div')
 form_skelb_div2.classList = 'mb-3'
 
@@ -99,7 +111,7 @@ form_skelb_div6.classList = 'mb-3'
 
 const lable_Foto = document.createElement('lable')
 lable_Foto.classList = 'form-lable text-secondary'
-lable_Foto.innerText = 'Product Description'
+lable_Foto.innerText = 'Product Foto'
 form_skelb_div6.appendChild(lable_Foto)
 
 const enterFoto = document.createElement('input')
@@ -107,6 +119,11 @@ enterFoto.setAttribute('type', 'text')
 enterFoto.classList = 'form-control'
 form_skelb_div6.appendChild(enterFoto)
 form_skelb.appendChild(form_skelb_div6)
+//===========================================
+cont_row_in.appendChild(form_skelb)
+cont_row.appendChild(cont_row_in)
+container_skel.appendChild(cont_row)
+skelb.appendChild(container_skel)
 //===========================================
 const insert_buttons = document.createElement('div')
 insert_buttons.classList = "mb-3 ms-5 d-flex justify-content-around align-items-center"
@@ -140,3 +157,8 @@ export{logout}
 export{del}
 export{updatebtn}
 export{insertbtn}
+export{enterName}
+export{enterQuantity}
+export{enterCost}
+export{enterDescription}
+export{enterFoto}
