@@ -12,6 +12,12 @@ const auth = getAuth();
 //===========================================
 import {log_reg} from './login_register_form.js'
 import {skelb} from './skelbimai_form.js'
+import {container_skel} from './skelbimai_form.js'
+import {every_skelb} from './skelbimai_form.js'
+import {block2} from './skelbimai_form.js'
+import {nav_bar} from './skelbimai_form.js'
+import {nav_button2} from './skelbimai_form.js'
+import {nav_button1} from './skelbimai_form.js'
 const user = auth.currentUser;
 
 onAuthStateChanged(auth, (user) => {
@@ -24,8 +30,39 @@ onAuthStateChanged(auth, (user) => {
             child = document.body.lastElementChild;
         }
         document.body.appendChild(skelb)
+        skelb.appendChild(block2)
+        skelb.appendChild(nav_bar)
+        skelb.appendChild(every_skelb)
+
+        
+
+        const go_to_all_skelb = () => {
+            var currentChild = skelb.lastElementChild;
+            while (currentChild) {
+                skelb.removeChild(currentChild)
+                currentChild = skelb.lastElementChild
+            }
+            skelb.appendChild(block2)
+            skelb.appendChild(nav_bar)
+            skelb.appendChild(every_skelb)
+        }
+        nav_button1.addEventListener('click', go_to_all_skelb)
+
+
+
+        const go_to_create_skelb = () => {
+            var currentChild = skelb.lastElementChild;
+            while (currentChild) {
+                skelb.removeChild(currentChild)
+                currentChild = skelb.lastElementChild
+            }
+            skelb.appendChild(block2)
+            skelb.appendChild(nav_bar)
+            skelb.appendChild(container_skel)
+        }
+        nav_button2.addEventListener('click', go_to_create_skelb)
+
         //===========================================
-        return uid
     }
     else {
         //log out

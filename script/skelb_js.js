@@ -74,6 +74,7 @@ onAuthStateChanged(auth, (user) => {
                 })
         }
         insertbtn.addEventListener('click', insertData)
+        
 
     }
 })

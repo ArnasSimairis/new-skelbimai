@@ -15,7 +15,59 @@ const logout = document.createElement('button')
 logout.setAttribute('id', 'logout')
 logout.innerText = 'Logout'
 block2.appendChild(logout)
-skelb.appendChild(block2)
+//===========================================
+
+
+
+
+
+//===========================================
+const nav_bar = document.createElement('nav')
+nav_bar.classList = 'navbar navbar-expand-lg bg-light'
+//===========================================
+const nav_bar_div = document.createElement('div')
+nav_bar_div.classList = 'container-fluid'
+//===========================================
+const nav_name = document.createElement('span')
+nav_name.classList = 'navbar-brand mb-0 h1'
+nav_name.innerText = 'Skelbimai'
+
+nav_bar_div.appendChild(nav_name)
+//===========================================
+const nav_bar_div_in = document.createElement('div')
+nav_bar_div_in.classList = 'collapse navbar-collapse'
+nav_bar_div_in.setAttribute('id', 'navbarSupportedContent')
+//===========================================
+const nav_ul = document.createElement('ul')
+nav_ul.classList = 'navbar-nav me-auto mb-2 mb-lg-0'
+//===========================================
+const nav_li1 = document.createElement('li')
+nav_li1.classList = 'nav-item'
+//===========================================
+const nav_button1 = document.createElement('button')
+nav_button1.classList = 'btn btn-sm btn-outline-secondary'
+nav_button1.innerText = 'Skelbimai'
+
+nav_li1.appendChild(nav_button1)
+nav_ul.appendChild(nav_li1)
+nav_bar_div_in.appendChild(nav_ul)
+//===========================================
+const nav_li2 = document.createElement('li')
+nav_li2.classList = 'nav-item'
+//===========================================
+const nav_button2 = document.createElement('button')
+nav_button2.classList = 'btn btn-sm btn-outline-secondary'
+nav_button2.innerText = 'Sukurti skelbima'
+
+nav_li2.appendChild(nav_button2)
+nav_ul.appendChild(nav_li2)
+nav_bar_div_in.appendChild(nav_ul)
+
+
+
+//===========================================
+nav_bar_div.appendChild(nav_bar_div_in)
+nav_bar.appendChild(nav_bar_div)
 //===========================================
 
 
@@ -123,7 +175,6 @@ form_skelb.appendChild(form_skelb_div6)
 cont_row_in.appendChild(form_skelb)
 cont_row.appendChild(cont_row_in)
 container_skel.appendChild(cont_row)
-skelb.appendChild(container_skel)
 //===========================================
 const insert_buttons = document.createElement('div')
 insert_buttons.classList = "mb-3 ms-5 d-flex justify-content-around align-items-center"
@@ -152,6 +203,22 @@ insert_buttons.appendChild(del)
 form_skelb.appendChild(insert_buttons)
 //===========================================
 
+
+
+
+
+//===========================================
+const every_skelb = document.createElement('div')
+skelb.appendChild(every_skelb)
+//===========================================
+
+
+
+
+
+
+//===========================================
+
 export{skelb}
 export{logout}
 export{del}
@@ -162,3 +229,11 @@ export{enterQuantity}
 export{enterCost}
 export{enterDescription}
 export{enterFoto}
+export{nav_bar}
+export{block2}
+export{every_skelb}
+export{container_skel}
+export{nav_button1}
+export{nav_button2}
+
+
