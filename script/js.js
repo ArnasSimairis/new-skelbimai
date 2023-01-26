@@ -13,7 +13,7 @@ const auth = getAuth();
 import {log_reg} from './login_register_form.js'
 import {skelb} from './skelbimai_form.js'
 import {container_skel} from './skelbimai_form.js'
-import {every_skelb} from './skelbimai_form.js'
+import {every_skelb} from './skelbimai_show.js'
 import {block2} from './skelbimai_form.js'
 import {nav_bar} from './skelbimai_form.js'
 import {nav_button2} from './skelbimai_form.js'

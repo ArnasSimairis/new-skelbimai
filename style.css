@@ -8,3 +8,7 @@ body{
 #login{
     display: none;
 }
+#my_img{
+    max-width: 250px;
+    max-height: 250px;
+}

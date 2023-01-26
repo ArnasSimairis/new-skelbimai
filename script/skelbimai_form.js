@@ -207,10 +207,6 @@ form_skelb.appendChild(insert_buttons)
 
 
 
-//===========================================
-const every_skelb = document.createElement('div')
-skelb.appendChild(every_skelb)
-//===========================================
 
 
 
@@ -231,7 +227,6 @@ export{enterDescription}
 export{enterFoto}
 export{nav_bar}
 export{block2}
-export{every_skelb}
 export{container_skel}
 export{nav_button1}
 export{nav_button2}
