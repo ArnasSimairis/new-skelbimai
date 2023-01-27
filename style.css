@@ -1,14 +1,18 @@
-body{
+body {
     height: 100vh;
 }
 
-#register{
+#register {
     display: block;
 }
-#login{
+
+#login {
     display: none;
 }
-#my_img{
+
+.my_img {
     max-width: 250px;
+    min-width: 200px;
     max-height: 250px;
+    min-height: 200px;
 }

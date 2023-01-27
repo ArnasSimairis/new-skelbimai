@@ -9,22 +9,34 @@ import { firebaseConfig } from "./firebase.js";
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
+const db = getDatabase(app);
+const dbref = ref(db)
 //===========================================
-import {log_reg} from './login_register_form.js'
-import {skelb} from './skelbimai_form.js'
-import {container_skel} from './skelbimai_form.js'
-import {every_skelb} from './skelbimai_show.js'
-import {block2} from './skelbimai_form.js'
-import {nav_bar} from './skelbimai_form.js'
-import {nav_button2} from './skelbimai_form.js'
-import {nav_button1} from './skelbimai_form.js'
+import { log_reg } from './login_register_form.js'
+import { skelb } from './skelbimai_form.js'
+import { container_skel } from './skelbimai_form.js'
+import { admin_container } from './admin_panel.js'
+import { every_skelb } from './skelbimai_show.js'
+import { block2 } from './skelbimai_form.js'
+import { nav_bar } from './skelbimai_form.js'
+import { nav_button3 } from './skelbimai_form.js'
+import { nav_button2 } from './skelbimai_form.js'
+import { nav_button1 } from './skelbimai_form.js'
+import { nav_li3 } from './skelbimai_form.js'
 const user = auth.currentUser;
 
+
+
+
 onAuthStateChanged(auth, (user) => {
+
     if (user) {
+
+        console.log(user);
         const uid = user.uid;
         //log in
-        var child = document.body.lastElementChild; 
+
+        var child = document.body.lastElementChild;
         while (child) {
             document.body.removeChild(child);
             child = document.body.lastElementChild;
@@ -33,8 +45,6 @@ onAuthStateChanged(auth, (user) => {
         skelb.appendChild(block2)
         skelb.appendChild(nav_bar)
         skelb.appendChild(every_skelb)
-
-        
 
         const go_to_all_skelb = () => {
             var currentChild = skelb.lastElementChild;
@@ -62,11 +72,23 @@ onAuthStateChanged(auth, (user) => {
         }
         nav_button2.addEventListener('click', go_to_create_skelb)
 
+        const go_to_admin_panel = () => {
+            var currentChild = skelb.lastElementChild;
+            while (currentChild) {
+                skelb.removeChild(currentChild)
+                currentChild = skelb.lastElementChild
+            }
+            skelb.appendChild(block2)
+            skelb.appendChild(nav_bar)
+            skelb.appendChild(admin_container)
+        }
+        nav_button3.addEventListener('click', go_to_admin_panel)
+
         //===========================================
     }
     else {
         //log out
-        var child = document.body.lastElementChild; 
+        var child = document.body.lastElementChild;
         while (child) {
             document.body.removeChild(child);
             child = document.body.lastElementChild;
@@ -82,7 +104,7 @@ const registerNewUser = () => {
 
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            
+
             const user = userCredential.user;
 
             const signintime = new Date()
@@ -103,7 +125,7 @@ const registerNewUser = () => {
         });
 
 };
-import {button_reg} from './login_register_form.js'
+import { button_reg } from './login_register_form.js'
 button_reg.addEventListener('click', registerNewUser);
 //===========================================
 
@@ -130,13 +152,13 @@ const loginUser = () => {
             console.log(errorMessage);
         });
 }
-import {button_login} from './login_register_form.js'
+import { button_login } from './login_register_form.js'
 button_login.addEventListener('click', loginUser)
 //===========================================
 
 
 //===========================================
-import {logout} from './skelbimai_form.js'
+import { logout } from './skelbimai_form.js'
 logout.addEventListener('click', () => {
     signOut(auth).then(() => {
         alert('sign-out')
@@ -159,6 +181,6 @@ const change_form = () => {
         document.getElementById('login').style.display = 'none'
     }
 }
-import {change_button} from './login_register_form.js'
+import { change_button } from './login_register_form.js'
 change_button.addEventListener('click', change_form)
 //===========================================

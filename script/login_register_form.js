@@ -81,7 +81,7 @@ const log_reg = document.createElement('div')
 log_reg.setAttribute('id', 'log_reg')
 log_reg.appendChild(main)
 //===========================================
-export{log_reg}
-export{button_reg}
-export{button_login}
-export{change_button}
+export { log_reg }
+export { button_reg }
+export { button_login }
+export { change_button }

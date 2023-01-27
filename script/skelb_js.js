@@ -19,13 +19,14 @@ const db = getDatabase();
 // let enterAprasyma = document.getElementById("enterAprasyma")
 // let enterFoto = document.getElementById("enterFoto")
 
-import {enterName} from "./skelbimai_form.js";
-import {enterQuantity} from "./skelbimai_form.js";
-import {enterCost} from "./skelbimai_form.js";
-import {enterDescription} from "./skelbimai_form.js";
-import {enterFoto} from "./skelbimai_form.js";
+import { enterName } from "./skelbimai_form.js";
+import { enterQuantity } from "./skelbimai_form.js";
+import { enterCost } from "./skelbimai_form.js";
+import { enterDescription } from "./skelbimai_form.js";
+import { enterFoto } from "./skelbimai_form.js";
 const auth = getAuth();
 const user = auth.currentUser;
+
 // let findBtn = document.getElementById("find")
 import { insertbtn } from "./skelbimai_form.js";
 
@@ -36,7 +37,7 @@ onAuthStateChanged(auth, (user) => {
         function insertData(evt) {
             evt.preventDefault();
             if (enterName.value === "") {
-                alert('Product Ngame cant be blank!')
+                alert('Product Name cant be blank!')
                 return
             }
             if (enterQuantity.value.length < 1) {
@@ -74,7 +75,7 @@ onAuthStateChanged(auth, (user) => {
                 })
         }
         insertbtn.addEventListener('click', insertData)
-        
+
 
     }
 })
@@ -137,15 +138,15 @@ function FindData(evt) {
 
                 let second_tr = document.createElement('tr')
                 let list_name = document.createElement('td')
-                list_name.textContent =  snapshot.val().Name
+                list_name.textContent = snapshot.val().Name
                 let list_quantity = document.createElement('td')
-                list_quantity.textContent =  snapshot.val().Quantity
+                list_quantity.textContent = snapshot.val().Quantity
                 let list_kaina = document.createElement('td')
-                list_kaina.textContent =  snapshot.val().Cost
+                list_kaina.textContent = snapshot.val().Cost
                 let list_aprasymas = document.createElement('td')
-                list_aprasymas.textContent =  snapshot.val().Description
+                list_aprasymas.textContent = snapshot.val().Description
                 let list_foto = document.createElement('img')
-                list_foto.src =  snapshot.val().Foto
+                list_foto.src = snapshot.val().Foto
                 list_foto.classList.add('hello')
 
                 second_tr.appendChild(list_name)
@@ -211,10 +212,10 @@ function UpdateData(evt) {
         .catch((error) => {
             alert(error);
         })
-    
+
 }
-import { updatebtn } from "./skelbimai_form.js";
-updatebtn.addEventListener('click', UpdateData)
+// import { updatebtn } from "./skelbimai_form.js";
+// updatebtn.addEventListener('click', UpdateData)
 
 
 function RemoveData(evt) {
@@ -231,7 +232,7 @@ function RemoveData(evt) {
         .catch((error) => {
             alert(error);
         })
-    
+
 }
-import { del } from "./skelbimai_form.js";
-del.addEventListener('click', RemoveData)
+// import { del } from "./skelbimai_form.js";
+// del.addEventListener('click', RemoveData)

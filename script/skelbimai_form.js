@@ -62,6 +62,17 @@ nav_button2.innerText = 'Sukurti skelbima'
 nav_li2.appendChild(nav_button2)
 nav_ul.appendChild(nav_li2)
 nav_bar_div_in.appendChild(nav_ul)
+// ===========================================
+const nav_li3 = document.createElement('li')
+nav_li3.classList = 'nav-item'
+//===========================================
+const nav_button3 = document.createElement('button')
+nav_button3.classList = 'btn btn-sm btn-outline-secondary'
+nav_button3.innerText = 'Admin Panel'
+
+nav_li3.appendChild(nav_button3)
+nav_ul.appendChild(nav_li3)
+nav_bar_div_in.appendChild(nav_ul)
 
 
 
@@ -186,19 +197,19 @@ insertbtn.setAttribute('id', 'insert')
 insertbtn.innerText = 'insert'
 insert_buttons.appendChild(insertbtn)
 
-const updatebtn = document.createElement('button')
-updatebtn.setAttribute('type', 'submit')
-updatebtn.classList = 'btn btn-secondary'
-updatebtn.setAttribute('id', 'update')
-updatebtn.innerText = 'update'
-insert_buttons.appendChild(updatebtn)
+// const updatebtn = document.createElement('button')
+// updatebtn.setAttribute('type', 'submit')
+// updatebtn.classList = 'btn btn-secondary'
+// updatebtn.setAttribute('id', 'update')
+// updatebtn.innerText = 'update'
+// insert_buttons.appendChild(updatebtn)
 
-const del = document.createElement('button')
-del.setAttribute('type', 'submit')
-del.classList = 'btn btn-secondary'
-del.setAttribute('id', 'remove')
-del.innerText = 'remove'
-insert_buttons.appendChild(del)
+// const del = document.createElement('button')
+// del.setAttribute('type', 'submit')
+// del.classList = 'btn btn-secondary'
+// del.setAttribute('id', 'remove')
+// del.innerText = 'remove'
+// insert_buttons.appendChild(del)
 
 form_skelb.appendChild(insert_buttons)
 //===========================================
@@ -215,20 +226,22 @@ form_skelb.appendChild(insert_buttons)
 
 //===========================================
 
-export{skelb}
-export{logout}
-export{del}
-export{updatebtn}
-export{insertbtn}
-export{enterName}
-export{enterQuantity}
-export{enterCost}
-export{enterDescription}
-export{enterFoto}
-export{nav_bar}
-export{block2}
-export{container_skel}
-export{nav_button1}
-export{nav_button2}
+export { skelb }
+export { logout }
+// export { del }
+// export { updatebtn }
+export { insertbtn }
+export { enterName }
+export { enterQuantity }
+export { enterCost }
+export { enterDescription }
+export { enterFoto }
+export { nav_bar }
+export { block2 }
+export { container_skel }
+export { nav_li3 }
+export { nav_button1 }
+export { nav_button2 }
+export { nav_button3 }
 
 
