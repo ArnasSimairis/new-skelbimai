@@ -66,9 +66,7 @@ nav_bar_div_in.appendChild(nav_ul)
 const nav_li3 = document.createElement('li')
 nav_li3.classList = 'nav-item'
 //===========================================
-const nav_button3 = document.createElement('button')
-nav_button3.classList = 'btn btn-sm btn-outline-secondary'
-nav_button3.innerText = 'Admin Panel'
+import { nav_button3 } from "./admin_panel.js";
 
 nav_li3.appendChild(nav_button3)
 nav_ul.appendChild(nav_li3)

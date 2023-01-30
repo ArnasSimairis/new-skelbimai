@@ -23,10 +23,10 @@ get(child(dbref, "Product/"))
         console.log(Products);
         Products.map(product => {
             const one_product_info_all = document.createElement('div')
-            one_product_info_all.classList = "container d-flex mt-4"
+            one_product_info_all.classList = "container d-flex mt-4 "
 
             const one_product_info = document.createElement('div')
-            one_product_info.classList = "container"
+            one_product_info.classList = "container d-flex flex-wrap flex-column align-content-between"
 
             const one_product_foto = document.createElement('img')
             one_product_foto.src = product.Foto
@@ -35,15 +35,27 @@ get(child(dbref, "Product/"))
 
             const one_product_name = document.createElement('h2')
             one_product_name.innerText = product.Name
+            one_product_name.classList = "my_Name"
             one_product_info.appendChild(one_product_name)
 
             const one_product_description = document.createElement('span')
             one_product_description.innerText = product.Description
+            one_product_description.classList = "my_Description"
             one_product_info.appendChild(one_product_description)
 
+            const one_product_cost_quantity = document.createElement('div')
+            one_product_cost_quantity.classList = 'container justify-content-between d-flex'
+
             const one_product_cost = document.createElement('h4')
-            one_product_cost.innerText = product.Kaina
-            one_product_info.appendChild(one_product_cost)
+            one_product_cost.innerText = "Cost: " + product.Cost
+            
+            const one_product_quantity = document.createElement('h4')
+            one_product_quantity.innerText = "quantity: " + product.Quantity
+
+            one_product_cost_quantity.appendChild(one_product_cost)
+            one_product_cost_quantity.appendChild(one_product_quantity)
+            one_product_info.appendChild(one_product_cost_quantity)
+
 
 
 

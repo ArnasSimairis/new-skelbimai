@@ -4,8 +4,6 @@ import { getDatabase, set, update, ref, get, child, remove, push } from "https:/
 
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 import { firebaseConfig } from "./firebase.js";
-import { getuserrole } from "./Role.js";
-
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
@@ -13,23 +11,20 @@ const auth = getAuth();
 const db = getDatabase(app);
 const dbref = ref(db)
 
-const nav_button3 = document.createElement('button')
-nav_button3.classList = 'btn btn-sm btn-outline-secondary'
-nav_button3.innerText = 'Admin Panel'
+function getuseruid() {
+    let user = auth.currentUser
+    console.log(user);
+    return user.uid
+}
 
-//===========================================
-const admin_container = document.createElement('div')
-//===========================================
+async function getuserrole() {
+    const userrole = await get(child(dbref, "users/" + getuseruid()))
+        .then((snapshot) => {
+            return snapshot.val().role
+        }).catch((error) => {
+            alert(error)
+        })
+    return userrole
+}
 
-getuserrole()
-    .then(data => {
-        if (data == 'simple_user') {
-            console.log("log");
-        }
-        else {
-            console.log("no");
-        }
-    })
-export { admin_container }
-export { nav_button3 }
-
+export{getuserrole}

@@ -19,7 +19,7 @@ import { admin_container } from './admin_panel.js'
 import { every_skelb } from './skelbimai_show.js'
 import { block2 } from './skelbimai_form.js'
 import { nav_bar } from './skelbimai_form.js'
-import { nav_button3 } from './skelbimai_form.js'
+import { nav_button3 } from './admin_panel.js'
 import { nav_button2 } from './skelbimai_form.js'
 import { nav_button1 } from './skelbimai_form.js'
 import { nav_li3 } from './skelbimai_form.js'
@@ -83,7 +83,6 @@ onAuthStateChanged(auth, (user) => {
             skelb.appendChild(admin_container)
         }
         nav_button3.addEventListener('click', go_to_admin_panel)
-
         //===========================================
     }
     else {

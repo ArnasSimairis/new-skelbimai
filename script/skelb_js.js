@@ -32,7 +32,7 @@ import { insertbtn } from "./skelbimai_form.js";
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        const user_uid = user.uid;
+        const user_email = user.email;
         const unique_id = Date.now()
         function insertData(evt) {
             evt.preventDefault();
@@ -61,9 +61,9 @@ onAuthStateChanged(auth, (user) => {
 
                 Name: enterName.value,
                 ID: unique_id,
-                Users: user_uid,
+                Users: user_email,
                 Quantity: enterQuantity.value,
-                Kaina: enterCost.value,
+                Cost: enterCost.value,
                 Description: enterDescription.value,
                 Foto: enterFoto.value
             })

@@ -16,3 +16,9 @@ body {
     max-height: 250px;
     min-height: 200px;
 }
+.my_Name{
+    height: 14%;
+}
+.my_Description{
+    height: 68%;
+}
