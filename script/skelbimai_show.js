@@ -20,7 +20,6 @@ get(child(dbref, "Product/"))
         snapshot.forEach(childSnapshot => {
             Products.push(childSnapshot.val())
         });
-        console.log(Products);
         Products.map(product => {
             const one_product_info_all = document.createElement('div')
             one_product_info_all.classList = "container d-flex mt-4 "
@@ -30,8 +29,28 @@ get(child(dbref, "Product/"))
 
             const one_product_foto = document.createElement('img')
             one_product_foto.src = product.Foto
-            one_product_foto.classList = 'my_img'
+            one_product_foto.classList = 'my_img rounded'
             one_product_info_all.appendChild(one_product_foto)
+
+            const add_to_cart_button = document.createElement('button')
+            add_to_cart_button.innerText = 'Add to cart'
+
+            
+
+            function add_to_cart () {
+                const cart = (() => {
+                    const fieldValue = localStorage.getItem('cart')
+                    return fieldValue === null
+                        ? []
+                        : JSON.parse(fieldValue)                    
+                })
+                cart.push({
+                    "ID": product.ID
+                })
+                localStorage.setItem('cart', JSON.stringify(cart))
+            }
+            add_to_cart_button.addEventListener('click', add_to_cart)
+
 
             const one_product_name = document.createElement('h2')
             one_product_name.innerText = product.Name
@@ -50,7 +69,7 @@ get(child(dbref, "Product/"))
             one_product_cost.innerText = "Cost: " + product.Cost
             
             const one_product_quantity = document.createElement('h4')
-            one_product_quantity.innerText = "quantity: " + product.Quantity
+            one_product_quantity.innerText = "Quantity: " + product.Quantity
 
             one_product_cost_quantity.appendChild(one_product_cost)
             one_product_cost_quantity.appendChild(one_product_quantity)

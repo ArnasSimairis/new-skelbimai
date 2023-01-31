@@ -16,6 +16,7 @@ logout.setAttribute('id', 'logout')
 logout.innerText = 'Logout'
 block2.appendChild(logout)
 //===========================================
+//===========================================
 
 
 
@@ -66,9 +67,7 @@ nav_bar_div_in.appendChild(nav_ul)
 const nav_li3 = document.createElement('li')
 nav_li3.classList = 'nav-item'
 //===========================================
-import { nav_button3 } from "./admin_panel.js";
 
-nav_li3.appendChild(nav_button3)
 nav_ul.appendChild(nav_li3)
 nav_bar_div_in.appendChild(nav_ul)
 
@@ -240,6 +239,6 @@ export { container_skel }
 export { nav_li3 }
 export { nav_button1 }
 export { nav_button2 }
-export { nav_button3 }
 
+export{nav_ul}
 

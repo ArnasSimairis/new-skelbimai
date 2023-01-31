@@ -26,8 +26,6 @@ import { nav_li3 } from './skelbimai_form.js'
 const user = auth.currentUser;
 
 
-
-
 onAuthStateChanged(auth, (user) => {
 
     if (user) {
@@ -72,17 +70,7 @@ onAuthStateChanged(auth, (user) => {
         }
         nav_button2.addEventListener('click', go_to_create_skelb)
 
-        const go_to_admin_panel = () => {
-            var currentChild = skelb.lastElementChild;
-            while (currentChild) {
-                skelb.removeChild(currentChild)
-                currentChild = skelb.lastElementChild
-            }
-            skelb.appendChild(block2)
-            skelb.appendChild(nav_bar)
-            skelb.appendChild(admin_container)
-        }
-        nav_button3.addEventListener('click', go_to_admin_panel)
+
         //===========================================
     }
     else {
